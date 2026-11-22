@@ -1,0 +1,30 @@
+import './TimeSelect.css';
+
+export function TimeSelect({ value, max, onChange }) {
+  const options = [];
+
+  for (let i = 0; i <= max; i++) {
+    if (i < 10) {
+      options.push('0' + i);
+    } else {
+      options.push(String(i));
+    }
+  }
+
+  return (
+    <div className="time-select-wrapper">
+      <select
+        className="time-select"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      >
+        {options.map((num) => (
+          <option key={num} value={num}>
+            {num}
+          </option>
+        ))}
+      </select>
+      <span className="time-select-arrow">⌄</span>
+    </div>
+  );
+}

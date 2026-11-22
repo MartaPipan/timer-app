@@ -1,6 +1,6 @@
-import './RectButton.css';
+import './SquareButton.css';
 
-export const RectButton = ({ functionalText, onClick, color = 'white' }) => {
+export const SquareButton = ({ functionalText, onClick, color = 'white' }) => {
   return (
     <button
       type="button"
