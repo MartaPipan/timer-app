@@ -1,11 +1,11 @@
 .circle-btn {
-  width: 90px;
-  height: 90px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   border: none;
   color: white;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 500;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -26,4 +26,10 @@
 }
 .circle-btn-blue:hover {
   background-color: #3b7dd8;
+}
+.circle-btn-red {
+  background-color: #da6a6a;
+}
+.circle-btn-red:hover {
+  background-color: #da6a6a;
 }

@@ -4,19 +4,16 @@ import './ArrowButton.css';
 
 export const ArrowButton = ({ functionalText, onClick }) => {
   const isLeft = functionalText === '<';
+  const isRight = functionalText === '>';
 
   return (
     <button
       type="button"
       onClick={onClick}
       className="arrow-btn"
-      aria-label={isLeft ? 'Decrease' : 'Increase'}
     >
-      <img
-        src={isLeft ? leftChevron : rightChevron}
-        alt={isLeft ? '<' : '>'}
-        className="arrow-icon"
-      />
+      {isLeft && <img src={leftChevron} alt="<" className="arrow-icon" />}
+      {isRight && <img src={rightChevron} alt=">" className="arrow-icon" />}
     </button>
   );
 };
