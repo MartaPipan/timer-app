@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export function useTimerForm(onAddTimer) {
+export function useTimerForm(onAddTimer, initialTimer = null) {
   const [hours, setHours] = useState('00');
   const [minutes, setMinutes] = useState('00');
   const [seconds, setSeconds] = useState('00');
@@ -19,7 +19,6 @@ export function useTimerForm(onAddTimer) {
       setTitle('');
     }
   }, [initialTimer]);
-  
 
   const handleStep = (currentValue, setValue, max, step) => {
     let next = Number(currentValue) + step;
@@ -40,7 +39,7 @@ export function useTimerForm(onAddTimer) {
     const totalSeconds =
       Number(hours) * 3600 + Number(minutes) * 60 + Number(seconds);
 
-    if (totalSeconds = 0) {
+    if (totalSeconds === 0) {
       alert('Please set a time greater than 0 seconds!');
       return;
     }

@@ -3,28 +3,42 @@ import { TimerForm } from './components/TimerForm/TimerForm.jsx';
 import { TimerCard } from './components/TimerCard/TimerCard.jsx';
 
 function App() {
-
   const [isFormOpen, setIsFormOpen] = useState(true);
-
   const [timers, setTimers] = useState([]);
+  const [editingTimer, setEditingTimer] = useState(null);
 
-  const handleAddTimer = (newTimerData) => {
-    const timerWithId = {
-      id: Date.now(), 
-      hours: newTimerData.hours,
-      minutes: newTimerData.minutes,
-      seconds: newTimerData.seconds,
-      title: newTimerData.title,
-    };
-
-    setTimers([...timers, timerWithId]);
+  const handleSaveTimer = (formData) => {
+    if (editingTimer) {
+      setTimers(
+        timers.map((timer) =>
+          timer.id === editingTimer.id
+            ? { ...timer, ...formData }
+            : timer
+        )
+      );
+      setEditingTimer(null);
+    } else {
+      const timerWithId = {
+        id: Date.now(),
+        hours: formData.hours,
+        minutes: formData.minutes,
+        seconds: formData.seconds,
+        title: formData.title,
+      };
+      setTimers([...timers, timerWithId]);
+    }
 
     setIsFormOpen(false);
   };
 
-  // Cancel або ×
+  const handleEditClick = (timer) => {
+    setEditingTimer(timer);
+    setIsFormOpen(true);
+  };
+
   const handleCancel = () => {
     setIsFormOpen(false);
+    setEditingTimer(null); 
   };
 
   return (
@@ -37,7 +51,8 @@ function App() {
 
       {isFormOpen && (
         <TimerForm
-          onAddTimer={handleAddTimer}
+          initialTimer={editingTimer}
+          onAddTimer={handleSaveTimer}
           onCancel={handleCancel}
         />
       )}
@@ -50,6 +65,7 @@ function App() {
             minutes={timer.minutes}
             seconds={timer.seconds}
             title={timer.title}
+            onEdit={() => handleEditClick(timer)}
           />
         ))}
       </div>
