@@ -3,8 +3,8 @@
   display: inline-flex;
   align-items: center;
   background-color: #ffffff;
-  height: 44px;
-  min-width: 72px;
+  height: 48px;
+  min-width: 85px;
 }
 
 .time-select {
@@ -17,7 +17,7 @@
   border: none;
   background-color: transparent;
   font-size: 16px;
-  color: #333333;
+  color: #9f9b9b;
   cursor: pointer;
   outline: none;
 }
@@ -31,3 +31,15 @@
   color: #333333;
   pointer-events: none;
 }
+
+.time-select-arrow-img {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+  pointer-events: none;
+}
+

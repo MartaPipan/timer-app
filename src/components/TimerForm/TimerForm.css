@@ -1,13 +1,16 @@
 .timer-form {
-  background-color: #787878; 
+  background-color: #5c5c5c; 
   color: #ffffff;
   width: 680px;
+  max-width: 100%;
+  margin: 0 auto; 
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   font-weight: 600;
   box-sizing: border-box;
 }
+
 .timer-form-header {
-  background-color: #575757;
+  background-color: #4e4e4e;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,26 +28,28 @@
   background: none;
   border: none;
   color: #dcd9d9;
-  font-size: 38px;
+  font-size: 28px;
   font-weight: 100;
   line-height: 1;
   cursor: pointer;
   padding: 0;
 }
+
 .close-btn:hover {
   color: #ffffff;
 }
 
 .timer-form-controls {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 28px 36px 0 36px;
-  margin-bottom: 28px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 40px;
+  padding: 28px 32px 0 32px;
+  margin-bottom: 18px;
+  box-sizing: border-box;
 }
 
 .time-block {
-  flex: 1;
+  min-width: 0; 
 }
 
 .time-block label,
@@ -58,27 +63,29 @@
 .time-inputs {
   display: flex;
   align-items: stretch;
+  width: 100%;
   height: 52px;
 }
 
 .timer-form-title {
   padding: 0 36px 36px 36px;
+  box-sizing: border-box;
 }
 
 .timer-form-title input {
   width: 100%;
-  height: 52px;
+  height: 48px;
   border: none;
   background-color: #ffffff;
   padding: 0 16px;
   font-size: 18px;
-  color: #333333;
+  color: #787878; 
   box-sizing: border-box;
   outline: none;
 }
 
 .timer-form-footer {
-  background-color: #787878;
+  background-color:  #5c5c5c;
   border-top: 1px solid #f7f2f2;
   padding: 20px 36px;
   display: flex;

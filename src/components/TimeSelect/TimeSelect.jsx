@@ -1,3 +1,4 @@
+import downArrow from '../../assets/down-arrow.png';
 import './TimeSelect.css';
 
 export function TimeSelect({ value, max, onChange }) {
@@ -24,7 +25,11 @@ export function TimeSelect({ value, max, onChange }) {
           </option>
         ))}
       </select>
-      <span className="time-select-arrow">⌄</span>
+      <img
+        src={downArrow}
+        alt="v"
+        className="time-select-arrow-img"
+      />
     </div>
   );
 }
