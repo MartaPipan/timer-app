@@ -1,14 +1,13 @@
 import './ArrowButton.css';
 
-export const ArrowButton = ({ direction, onClick }) => {
+export const ArrowButton = ({ functionalText, onClick }) => {
   return (
     <button
       type="button"
       onClick={onClick}
       className="arrow-btn"
     >
-      {direction === 'left' ? '<' : '>'}
+      {functionalText}
     </button>
   );
 };
-

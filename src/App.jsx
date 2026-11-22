@@ -1,37 +1,27 @@
 import { CircleButton } from './components/CircleButton/CircleButton.jsx';
-import { SquareButton } from './components/SquareButton/SquareButton.jsx';
-import { ArrowButton } from './components/ArrowButton/ArrowButton.jsx';
+import { TimerForm } from './components/TimerForm/TimerForm.jsx';
 
 function App() {
-  const handleStart = () => {
-    alert('Натиснуто Start!');
+  const handleAddTimer = (timerData) => {
+    console.log('Створено таймер:', timerData);
   };
 
-  const handleReset = () => {
-    alert('Натиснуто Reset!');
+  const handleCancel = () => {
+    console.log('Скасовано');
   };
 
   return (
-    <>
+    <div>
+      <TimerForm 
+        onAddTimer={handleAddTimer} 
+        onCancel={handleCancel} 
+      />
+
       <div>
-        <CircleButton 
-          functionalText="Start" 
-          onClick={handleStart} 
-        />
-        
-        <CircleButton 
-          functionalText="Reset" 
-          color="blue" 
-          onClick={handleReset} 
-        />
+        <CircleButton functionalText="Start" onClick={() => alert('Start')} />
+        <CircleButton functionalText="Reset" color="blue" onClick={() => alert('Reset')} />
       </div>
-      <div>
-        <ArrowButton functionalText="<" onClick={() => console.log('Менше')} />
-        <ArrowButton functionalText=">" onClick={() => console.log('Більше')} />
-        <SquareButton functionalText="Cancel" color="white" onClick={() => console.log('Скасувати')} />
-        <SquareButton functionalText="Start" color="green" onClick={() => console.log('Старт')} />
-      </div>
-    </>
+    </div>
   );
 }
 
