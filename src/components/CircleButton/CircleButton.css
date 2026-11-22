@@ -1,0 +1,29 @@
+.circle-btn {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+.circle-btn:active {
+  transform: scale(0.95);
+}
+.circle-btn--green {
+  background-color: #16a085;
+}
+.circle-btn--green:hover {
+  background-color: #138d75; 
+}
+.circle-btn--blue {
+  background-color: #4a89dc;
+}
+.circle-btn--blue:hover {
+  background-color: #3b7dd8; 
+}
