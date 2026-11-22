@@ -4,7 +4,7 @@ import { SquareButton } from '../SquareButton/SquareButton.jsx';
 import { useTimerForm } from './useTimerForm.js';
 import './TimerForm.css';
 
-export function TimerForm({ onAddTimer, onCancel }) {
+export function TimerForm({ onAddTimer, onCancel, initialTimer = null }) {
   const {
     hours,
     setHours,
@@ -16,7 +16,7 @@ export function TimerForm({ onAddTimer, onCancel }) {
     setTitle,
     handleStep,
     handleSubmit,
-  } = useTimerForm(onAddTimer);
+  } = useTimerForm(onAddTimer, initialTimer);
 
   return (
     <form className="timer-form" onSubmit={handleSubmit}>
