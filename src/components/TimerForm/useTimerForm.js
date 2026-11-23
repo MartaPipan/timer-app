@@ -5,8 +5,10 @@ export function useTimerForm(onAddTimer, initialTimer = null, onUpdateTitleOnly 
   const [minutes, setMinutes] = useState('00');
   const [seconds, setSeconds] = useState('00');
   const [title, setTitle] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
+    setError('');
     if (initialTimer) {
       setHours(initialTimer.hours);
       setMinutes(initialTimer.minutes);
@@ -21,23 +23,30 @@ export function useTimerForm(onAddTimer, initialTimer = null, onUpdateTitleOnly 
   }, [initialTimer]);
 
   const handleStep = (currentValue, setValue, max, step) => {
+    setError('');
     let next = Number(currentValue) + step;
 
     if (next < 0) next = max;
     if (next > max) next = 0;
 
-    if (next < 10) {
-      setValue('0' + next);
-    } else {
-      setValue(String(next));
-    }
+    setValue(next < 10 ? '0' + next : String(next));
+  };
+
+  const handleTitleChange = (newTitle) => {
+    setError('');
+    setTitle(newTitle);
+  };
+
+  const handleTimeChange = (setter) => (val) => {
+    setError('');
+    setter(val);
   };
 
   const handleTitleConfirm = () => {
     const validTitle = title.trim();
 
     if (!validTitle) {
-      alert('Please enter a timer title!');
+      setError('Please enter a timer title!');
       return;
     }
 
@@ -48,21 +57,22 @@ export function useTimerForm(onAddTimer, initialTimer = null, onUpdateTitleOnly 
 
   const handleSubmit = (e) => {
     if (e) e.preventDefault();
-    
+
     const totalSeconds =
       Number(hours) * 3600 + Number(minutes) * 60 + Number(seconds);
     const validTitle = title.trim();
 
     if (totalSeconds === 0) {
-      alert('Please set a time greater than 0 seconds!');
+      setError('Please set a time greater than 0 seconds!');
       return;
     }
 
     if (!validTitle) {
-      alert('Please enter a timer title!');
+      setError('Please enter a timer title!');
       return;
     }
 
+    setError('');
     if (onAddTimer) {
       onAddTimer({ hours, minutes, seconds, title: validTitle });
     }
@@ -70,13 +80,14 @@ export function useTimerForm(onAddTimer, initialTimer = null, onUpdateTitleOnly 
 
   return {
     hours,
-    setHours,
+    setHours: handleTimeChange(setHours),
     minutes,
-    setMinutes,
+    setMinutes: handleTimeChange(setMinutes),
     seconds,
-    setSeconds,
+    setSeconds: handleTimeChange(setSeconds),
     title,
-    setTitle,
+    setTitle: handleTitleChange,
+    error,
     handleStep,
     handleTitleConfirm,
     handleSubmit,

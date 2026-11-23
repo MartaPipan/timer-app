@@ -19,6 +19,7 @@ export function TimerForm({
     setSeconds,
     title,
     setTitle,
+    error,
     handleStep,
     handleTitleConfirm,
     handleSubmit,
@@ -42,38 +43,41 @@ export function TimerForm({
 
       <div className="timer-form-controls">
         <div className="time-block">
-          <label>Hours</label>
+          <label htmlFor="hours-select">Hours</label>
           <div className="time-inputs">
             <ArrowButton functionalText="<" onClick={() => handleStep(hours, setHours, 23, -1)} />
-            <TimeSelect value={hours} max={23} onChange={setHours} />
+            <TimeSelect id="hours-select" value={hours} max={23} onChange={setHours} />
             <ArrowButton functionalText=">" onClick={() => handleStep(hours, setHours, 23, 1)} />
           </div>
         </div>
 
         <div className="time-block">
-          <label>Minutes</label>
+          <label htmlFor="minutes-select">Minutes</label>
           <div className="time-inputs">
             <ArrowButton functionalText="<" onClick={() => handleStep(minutes, setMinutes, 59, -1)} />
-            <TimeSelect value={minutes} max={59} onChange={setMinutes} />
+            <TimeSelect id="minutes-select" value={minutes} max={59} onChange={setMinutes} />
             <ArrowButton functionalText=">" onClick={() => handleStep(minutes, setMinutes, 59, 1)} />
           </div>
         </div>
 
         <div className="time-block">
-          <label>Seconds</label>
+          <label htmlFor="seconds-select">Seconds</label>
           <div className="time-inputs">
             <ArrowButton functionalText="<" onClick={() => handleStep(seconds, setSeconds, 59, -1)} />
-            <TimeSelect value={seconds} max={59} onChange={setSeconds} />
+            <TimeSelect id="seconds-select" value={seconds} max={59} onChange={setSeconds} />
             <ArrowButton functionalText=">" onClick={() => handleStep(seconds, setSeconds, 59, 1)} />
           </div>
         </div>
       </div>
 
       <div className="timer-form-title">
-        <label>Title</label>
+        <label htmlFor="timer-title-input">Title</label>
         <div className="title-input-row">
           <input
+            id="timer-title-input"
+            name="title"
             type="text"
+            className={error.includes('title') ? 'input-error' : ''}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             onKeyDown={handleTitleKeyDown}
@@ -90,6 +94,13 @@ export function TimerForm({
           )}
         </div>
       </div>
+
+      {error && (
+        <div className="form-error-banner" role="alert">
+          <span className="error-icon">!</span>
+          <span>{error}</span>
+        </div>
+      )}
 
       <div className="timer-form-footer">
         <SquareButton functionalText="Cancel" color="white" onClick={onCancel} />

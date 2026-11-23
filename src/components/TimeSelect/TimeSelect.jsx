@@ -1,7 +1,7 @@
 import downArrow from '../../assets/down-arrow.png';
 import './TimeSelect.css';
 
-export function TimeSelect({ value, max, onChange }) {
+export function TimeSelect({ id, value, max, onChange }) {
   const options = [];
 
   for (let i = 0; i <= max; i++) {
@@ -15,6 +15,8 @@ export function TimeSelect({ value, max, onChange }) {
   return (
     <div className="time-select-wrapper">
       <select
+        id={id}
+        name={id}
         className="time-select"
         value={value}
         onChange={(e) => onChange(e.target.value)}
