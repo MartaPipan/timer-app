@@ -1,11 +1,11 @@
 .timer-form {
   background-color: #5c5c5c; 
   color: #ffffff;
-  width: 680px;
+  width:  520px;
   max-width: 100%;
-  margin: 0 auto; 
+  margin: 0 auto 10px auto; 
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   box-sizing: border-box;
 }
 
@@ -14,13 +14,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 22px 36px;
+  padding: 15px 28px;
 }
 
 .timer-form-header h2 {
   margin: 0;
   font-weight: 300;
-  font-size: 32px;
+  font-size: 26px;
   color: #fdf9f9;
 }
 
@@ -42,9 +42,9 @@
 .timer-form-controls {
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
-  gap: 40px;
-  padding: 28px 32px 0 32px;
-  margin-bottom: 18px;
+  padding: 20px 28px 0 28px;
+  gap: 18px;
+  margin-bottom: 16px;
   box-sizing: border-box;
 }
 
@@ -55,8 +55,8 @@
 .time-block label,
 .timer-form-title label {
   display: block;
-  margin-bottom: 10px;
-  font-size: 20px;
+  margin-bottom: 8px;
+  font-size: 16px;
   color: #f4f3f3;
 }
 
@@ -64,7 +64,7 @@
   display: flex;
   align-items: stretch;
   width: 100%;
-  height: 52px;
+  height: 40px;
 }
 
 .timer-form-title {
@@ -74,11 +74,11 @@
 
 .timer-form-title input {
   width: 100%;
-  height: 48px;
+  height: 45px;
   border: none;
   background-color: #ffffff;
-  padding: 0 16px;
-  font-size: 18px;
+  padding: 0 12px;
+  font-size: 16px;
   color: #787878; 
   box-sizing: border-box;
   outline: none;
@@ -88,7 +88,7 @@
   display: flex;
   align-items: stretch;
   width: 100%;
-  height: 48px;
+  height: 40px;
 }
 
 .title-input-row input {
@@ -98,12 +98,12 @@
 }
 
 .confirm-title-btn {
-  width: 48px;
-  height: 48px;
+  width: 45px;
+  height: 45px;
   background-color: #74b784;
   color: #ffffff;
   border: none;
-  font-size: 26px;
+  font-size: 20px;
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -120,8 +120,19 @@
 .timer-form-footer {
   background-color:  #5c5c5c;
   border-top: 1px solid #f7f2f2;
-  padding: 20px 36px;
+  padding: 14px 28px;
   display: flex;
   justify-content: flex-end;
-  gap: 16px;
+  gap: 12px;
 }
+
+@media (max-width: 520px) {
+  .timer-form-header,
+  .timer-form-controls,
+  .timer-form-title,
+  .timer-form-footer {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
