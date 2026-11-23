@@ -1,8 +1,53 @@
 .app {
+  width: 100%;
+  max-width: 100%;
   min-height: 100vh;
+  padding: 24px 16px; 
   display: flex;
   flex-direction: column;
-  align-items: center;     
-  justify-content: center;  
+  align-items: center;
   box-sizing: border-box;
+  overflow-x: hidden; 
 }
+.add-timer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 20px;
+  padding: 12px 22px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #34cec6 0%, #099670 100%);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.add-timer-icon {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.add-timer-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.45);
+  background: linear-gradient(135deg, #34d399 0%, #056e4b 100%);
+}
+
+.add-timer-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.timers-list {
+  width: 100%;
+  max-width: 600px; 
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+

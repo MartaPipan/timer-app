@@ -175,4 +175,44 @@
   100% { opacity: 1; transform: translateX(0); }
 }
 
+@media (max-width: 560px) {
+  .timer-form-header,
+  .timer-form-controls,
+  .timer-form-title,
+  .timer-form-footer {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .timer-form-controls {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .time-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .time-block label {
+    margin-bottom: 0;
+  }
+
+  .time-inputs {
+    width: 170px; 
+    flex-shrink: 0;
+  }
+
+  .form-error-banner {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .timer-form-footer button {
+    flex: 1; 
+  }
+}
+
 

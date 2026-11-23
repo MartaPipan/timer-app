@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { TimerForm } from './components/TimerForm/TimerForm.jsx';
-import { TimerCard } from './components/TimerCard/TimerCard.jsx';
+import {useState} from "react";
+import {TimerForm} from "./components/TimerForm/TimerForm.jsx";
+import {TimerCard} from "./components/TimerCard/TimerCard.jsx";
+import "./App.css";
 
 function App() {
   const [isFormOpen, setIsFormOpen] = useState(true);
@@ -9,13 +10,7 @@ function App() {
 
   const handleSaveTimer = (formData) => {
     if (editingTimer) {
-      setTimers(
-        timers.map((timer) =>
-          timer.id === editingTimer.id
-            ? { ...timer, ...formData }
-            : timer
-        )
-      );
+      setTimers(timers.map((timer) => (timer.id === editingTimer.id ? {...timer, ...formData} : timer)));
       setEditingTimer(null);
     } else {
       const timerWithId = {
@@ -34,11 +29,7 @@ function App() {
   const handleUpdateTitleOnly = (newTitle) => {
     if (!editingTimer) return;
 
-    setTimers(
-      timers.map((timer) =>
-        timer.id === editingTimer.id ? { ...timer, title: newTitle } : timer
-      )
-    );
+    setTimers(timers.map((timer) => (timer.id === editingTimer.id ? {...timer, title: newTitle} : timer)));
     setEditingTimer(null);
     setIsFormOpen(false);
   };
@@ -50,36 +41,22 @@ function App() {
 
   const handleCancel = () => {
     setIsFormOpen(false);
-    setEditingTimer(null); 
+    setEditingTimer(null);
   };
 
   return (
     <div className="app">
       {!isFormOpen && (
-        <button type="button" onClick={() => setIsFormOpen(true)}>
-          + Add Timer
+        <button type="button" className="add-timer-btn" onClick={() => setIsFormOpen(true)}>
+          <span className="add-timer-icon">+</span> Add Timer
         </button>
       )}
 
-      {isFormOpen && (
-        <TimerForm
-          initialTimer={editingTimer}
-          onAddTimer={handleSaveTimer}
-          onUpdateTitleOnly={handleUpdateTitleOnly}
-          onCancel={handleCancel}
-        />
-      )}
+      {isFormOpen && <TimerForm initialTimer={editingTimer} onAddTimer={handleSaveTimer} onUpdateTitleOnly={handleUpdateTitleOnly} onCancel={handleCancel} />}
 
       <div className="timers-list">
         {timers.map((timer) => (
-          <TimerCard
-            key={timer.id}
-            hours={timer.hours}
-            minutes={timer.minutes}
-            seconds={timer.seconds}
-            title={timer.title}
-            onEdit={() => handleEditClick(timer)}
-          />
+          <TimerCard key={timer.id} hours={timer.hours} minutes={timer.minutes} seconds={timer.seconds} title={timer.title} onEdit={() => handleEditClick(timer)} />
         ))}
       </div>
     </div>
