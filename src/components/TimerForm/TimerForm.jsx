@@ -4,7 +4,12 @@ import { SquareButton } from '../SquareButton/SquareButton.jsx';
 import { useTimerForm } from './useTimerForm.js';
 import './TimerForm.css';
 
-export function TimerForm({ onAddTimer, onCancel, initialTimer = null }) {
+export function TimerForm({
+  onAddTimer,
+  onCancel,
+  initialTimer = null,
+  onUpdateTitleOnly = null,
+}) {
   const {
     hours,
     setHours,
@@ -15,13 +20,21 @@ export function TimerForm({ onAddTimer, onCancel, initialTimer = null }) {
     title,
     setTitle,
     handleStep,
+    handleTitleConfirm,
     handleSubmit,
-  } = useTimerForm(onAddTimer, initialTimer);
+  } = useTimerForm(onAddTimer, initialTimer, onUpdateTitleOnly);
+
+  const handleTitleKeyDown = (e) => {
+    if (e.key === 'Enter' && initialTimer) {
+      e.preventDefault();
+      handleTitleConfirm();
+    }
+  };
 
   return (
     <form className="timer-form" onSubmit={handleSubmit}>
       <div className="timer-form-header">
-        <h2>Add Timer</h2>
+        <h2>{initialTimer ? 'Edit Timer' : 'Add Timer'}</h2>
         <button type="button" className="close-btn" onClick={onCancel}>
           ×
         </button>
@@ -58,11 +71,24 @@ export function TimerForm({ onAddTimer, onCancel, initialTimer = null }) {
 
       <div className="timer-form-title">
         <label>Title</label>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+        <div className="title-input-row">
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            onKeyDown={handleTitleKeyDown}
+          />
+          {initialTimer && (
+            <button
+              type="button"
+              className="confirm-title-btn"
+              onClick={handleTitleConfirm}
+              title="Save title without stopping timer"
+            >
+              ✓
+            </button>
+          )}
+        </div>
       </div>
 
       <div className="timer-form-footer">

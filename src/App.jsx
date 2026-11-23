@@ -31,6 +31,19 @@ function App() {
     setIsFormOpen(false);
   };
 
+  // Оновлюємо тільки назву, щоб не збивати активний відлік часу
+  const handleUpdateTitleOnly = (newTitle) => {
+    if (!editingTimer) return;
+
+    setTimers(
+      timers.map((timer) =>
+        timer.id === editingTimer.id ? { ...timer, title: newTitle } : timer
+      )
+    );
+    setEditingTimer(null);
+    setIsFormOpen(false);
+  };
+
   const handleEditClick = (timer) => {
     setEditingTimer(timer);
     setIsFormOpen(true);
@@ -53,6 +66,7 @@ function App() {
         <TimerForm
           initialTimer={editingTimer}
           onAddTimer={handleSaveTimer}
+          onUpdateTitleOnly={handleUpdateTitleOnly}
           onCancel={handleCancel}
         />
       )}
