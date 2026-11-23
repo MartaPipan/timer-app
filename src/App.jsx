@@ -31,7 +31,6 @@ function App() {
     setIsFormOpen(false);
   };
 
-  // Оновлюємо тільки назву, щоб не збивати активний відлік часу
   const handleUpdateTitleOnly = (newTitle) => {
     if (!editingTimer) return;
 

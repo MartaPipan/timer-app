@@ -33,7 +33,6 @@ export function useTimerForm(onAddTimer, initialTimer = null, onUpdateTitleOnly 
     }
   };
 
-  // Підтвердження тільки назви через ✓ або Enter (таймер не зупиняється)
   const handleTitleConfirm = () => {
     const validTitle = title.trim();
 
